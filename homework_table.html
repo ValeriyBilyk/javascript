@@ -6,7 +6,7 @@
 
     <link href="homework_table.css" rel="stylesheet">
 </head>
-<body>
+<body id="body">
 <table id="table" border="1" cellspacing="0" cellpadding="4">
     <caption>Демонстрация работы с массивами</caption>
     <tr>
@@ -37,13 +37,32 @@
     cards[2] = ['2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', 'Th', 'Jh', 'Qh', 'Kh', 'Ah'];
     cards[3] = ['2d', '3d', '4d', '5d', '6d', '7d', '8d', '9d', 'Td', 'Jd', 'Qd', 'Kd', 'Ad'];
 
-    var tb = document.getElementById("table");
-    for (var i = 1; i <= 4; i++) {
-        var x = tb.rows[i].cells;
-        for (var j = 1; j <= 13; j++) {
-            x[j].innerHTML = cards[i - 1][j - 1];
+    var body = document.getElementById("body");
+    var table = document.createElement("table");
+    var caption = document.createElement("caption");
+    caption.innerHTML = "Демонстрация работы с массивами";
+    var tbody = document.createElement("tbody");
+    for (var i = 0; i < 5; i++) {
+        var tr = document.createElement("tr");
+        if (i == 0) {
+            for (var j = 0; j <= 13; j++) {
+                var th = document.createElement("th");
+                tr.appendChild(th);
+            }
+        } else {
+            for (j = 0; j <= 13; j++) {
+                var td = document.createElement("td");
+                if ((i >= 1) && (j >= 1)) {
+                    td.innerHTML = cards[i - 1][j - 1];
+                }
+                tr.appendChild(td);
+            }
         }
+        tbody.appendChild(tr);
     }
+    table.appendChild(caption);
+    table.appendChild(tbody);
+    body.appendChild(table);
 </script>
 </body>
 </html>
