@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+
+th:nth-child(n + 2) {
+    background: #424242;
+}
+
+tr:nth-child(2n + 2) td:nth-child(2n + 1) {
+    background: gray;
+}
+
+tr:nth-child(2n + 1) td:nth-child(2n) {
+    background: gray;
+}
+
+caption {
+    font-size: 18px;
+}
