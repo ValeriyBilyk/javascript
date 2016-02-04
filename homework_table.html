@@ -38,21 +38,29 @@
     cards[3] = ['2d', '3d', '4d', '5d', '6d', '7d', '8d', '9d', 'Td', 'Jd', 'Qd', 'Kd', 'Ad'];
 
     var body = document.getElementById("body");
+
     var table = document.createElement("table");
+
     var caption = document.createElement("caption");
     caption.innerHTML = "Демонстрация работы с массивами";
+
     var tbody = document.createElement("tbody");
+
     for (var i = 0; i < cards.length + 1; i++) {
         var tr = document.createElement("tr");
         if (i <= cards.length) {
             if (i == 0) {
                 for (var j = 0; j <= cards[i].length; j++) {
                     var th = document.createElement("th");
+                    if (j > 0) {
+                        th.innerHTML = j;
+                    }
                     tr.appendChild(th);
                 }
             } else {
                 for (j = 0; j <= cards[i - 1].length; j++) {
                     var td = document.createElement("td");
+                    td.innerHTML = i;
                     if ((i >= 1) && (j >= 1)) {
                         td.innerHTML = cards[i - 1][j - 1];
                     }
