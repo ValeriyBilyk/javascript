@@ -7,7 +7,7 @@
     <link href="homework_table.css" rel="stylesheet">
 </head>
 <body id="body">
-<table id="table" border="1" cellspacing="0" cellpadding="4">
+<!--<table id="table" border="1" cellspacing="0" cellpadding="4">
     <caption>Демонстрация работы с массивами</caption>
     <tr>
         <th>&nbsp;</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>
@@ -29,7 +29,7 @@
         <td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
         <td></td><td></td>
     </tr>
-</table>
+</table>-->
 <script type="text/javascript">
     var cards = [];
     cards[0] = ['2s', '3s', '4s', '5s', '6s', '7s', '8s', '9s', 'Ts', 'Js', 'Qs', 'Ks', 'As'];
@@ -42,23 +42,25 @@
     var caption = document.createElement("caption");
     caption.innerHTML = "Демонстрация работы с массивами";
     var tbody = document.createElement("tbody");
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < cards.length + 1; i++) {
         var tr = document.createElement("tr");
-        if (i == 0) {
-            for (var j = 0; j <= 13; j++) {
-                var th = document.createElement("th");
-                tr.appendChild(th);
-            }
-        } else {
-            for (j = 0; j <= 13; j++) {
-                var td = document.createElement("td");
-                if ((i >= 1) && (j >= 1)) {
-                    td.innerHTML = cards[i - 1][j - 1];
+        if (i <= cards.length) {
+            if (i == 0) {
+                for (var j = 0; j <= cards[i].length; j++) {
+                    var th = document.createElement("th");
+                    tr.appendChild(th);
                 }
-                tr.appendChild(td);
+            } else {
+                for (j = 0; j <= cards[i - 1].length; j++) {
+                    var td = document.createElement("td");
+                    if ((i >= 1) && (j >= 1)) {
+                        td.innerHTML = cards[i - 1][j - 1];
+                    }
+                    tr.appendChild(td);
+                }
             }
+            tbody.appendChild(tr);
         }
-        tbody.appendChild(tr);
     }
     table.appendChild(caption);
     table.appendChild(tbody);
