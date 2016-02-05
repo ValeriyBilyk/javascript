@@ -5,6 +5,7 @@
     <title>Table</title>
 
     <link href="homework_table.css" rel="stylesheet">
+    <script src="lib/jquery-1.12.0.min.js"></script>
 </head>
 <body id="body">
 <!--<table id="table" border="1" cellspacing="0" cellpadding="4">
@@ -32,9 +33,9 @@
 </table>-->
 <script type="text/javascript">
     var cards = [];
-    cards[0] = ['2s', '3s', '4s', '5s', '6s', '7s', '8s', '9s', 'Ts', 'Js', 'Qs', 'Ks', 'As'];
-    cards[1] = ['2c', '3c', '4c', '5c', '6c', '7c', '8c', '9c', 'Tc', 'Jc', 'Qc', 'Kc', 'Ac'];
-    cards[2] = ['2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', 'Th', 'Jh', 'Qh', 'Kh', 'Ah'];
+    cards[0] = ['2s', '3s', '4s', '5s', '6s', '7s', '8s', '9s', 'Ts', 'Js', 'Qs', 'Ks', 'As', "Yt"];
+    cards[1] = ['2c', '3c', '4c', '5c', '6c', '7c', '8c', '9c', 'Tc', 'Jc', 'Qc', 'Kc', 'Ac', "Mr", "Nb", "Tc", "Gh"];
+    cards[2] = ['2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', 'Th', 'Jh', 'Qh', 'Kh', 'Ah', "Hg"];
     cards[3] = ['2d', '3d', '4d', '5d', '6d', '7d', '8d', '9d', 'Td', 'Jd', 'Qd', 'Kd', 'Ad'];
 
     var body = document.getElementById("body");
@@ -46,11 +47,18 @@
 
     var tbody = document.createElement("tbody");
 
+    var maxLength = 0;
+    for (var n = 0; n < cards.length; n++) {
+        if (cards[n].length > maxLength) {
+            maxLength = cards[n].length;
+        }
+    }
+
     for (var i = 0; i < cards.length + 1; i++) {
         var tr = document.createElement("tr");
         if (i <= cards.length) {
             if (i == 0) {
-                for (var j = 0; j <= cards[i].length; j++) {
+                for (var j = 0; j <= maxLength; j++) {
                     var th = document.createElement("th");
                     if (j > 0) {
                         th.innerHTML = j;

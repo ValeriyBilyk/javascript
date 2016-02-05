@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table-jQuery</title>
+
+    <link href="homework_table.css" rel="stylesheet">
+    <script src="lib/jquery-1.12.0.min.js"></script>
+</head>
+<body>
+<script>
+    var cards = [];
+    cards[0] = ['2s', '3s', '4s', '5s', '6s', '7s', '8s', '9s', 'Ts', 'Js', 'Qs', 'Ks', 'As'];
+    cards[1] = ['2c', '3c', '4c', '5c', '6c', '7c', '8c', '9c', 'Tc', 'Jc', 'Qc', 'Kc', 'Ac'];
+    cards[2] = ['2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', 'Th', 'Jh', 'Qh', 'Kh', 'Ah'];
+    cards[3] = ['2d', '3d', '4d', '5d', '6d', '7d', '8d', '9d', 'Td', 'Jd', 'Qd', 'Kd', 'Ad'];
+
+    jQuery(document).ready(function($) {
+        var table = $("<table></table>").addClass("table");
+        var caption = $("<caption></caption>").text("Демонстрация работы jQuery");
+        table.append(caption);
+
+        var maxLength = 0;
+        for (var n = 0; n < cards.length; n++) {
+            if (cards[n].length > maxLength) {
+                maxLength = cards[n].length;
+            }
+        }
+
+        for (var i = 0; i < cards.length + 1; i++) {
+            var tr = $("<tr></tr>");
+            if (i <= cards.length) {
+                if (i == 0) {
+                    for (var j = 0; j <= maxLength; j++) {
+                        var th = $("<th></th>");
+                        if (j > 0) {
+                            th.text(j);
+                        }
+                        tr.append(th);
+                    }
+                } else {
+                    for (j = 0; j <= cards[i - 1].length; j++) {
+                        var td = $("<td></td>");
+                        if ((i >= 1) && (j >= 1)) {
+                            td.text(cards[i - 1][j - 1]);
+                        } else {
+                            td.text(i);
+                        }
+                        tr.append(td);
+                    }
+                }
+                table.append(tr);
+            }
+        }
+        $("body").append(table);
+    });
+</script>
+</body>
+</html>
